@@ -1,0 +1,11 @@
+- name: Setup local development environment
+  hosts: all
+  tasks:  
+    - name: Install dependencies
+      sudo: yes
+      apt: name={{item}} state=installed update_cache=yes cache_valid_time=3600
+      with_items:
+        - cmake
+        - gdb
+        - valgrind
+        - uuid-dev
